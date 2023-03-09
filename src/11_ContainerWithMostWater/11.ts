@@ -26,8 +26,11 @@ Acceptance Rate
  */
 
 function maxArea(height: number[]): number {
-  const getValue = (l: number, r: number): number => Math.min(height[l], height[r]) * (r - l)
+  const getValue = (l: number, r: number): number =>
+    Math.min(height[l], height[r]) * (r - l);
 
-  let [l, r, v] = [0, height.length - 1, 0]
-  let [bl, br, bv] = [l, r, v]
+  let [l, r, v] = [0, height.length - 1, 0];
+  let [bl, br, bv] = [l, r, v];
+  console.log({bl});
+  return v;
 }

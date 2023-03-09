@@ -33,12 +33,13 @@ Follow-up: Can you come up with an algorithm that is less than O(n2) time comple
  */
 
 function twoSum(nums: number[], target: number): number[] {
-  for(let l = 0; l < nums.length; l++) {
-    const goal = target - nums[l]
-    let r = l + 1
-    while(r < nums.length) {
-      if(nums[r] === goal ) return [l, r]
-      r++
+  for (let l = 0; l < nums.length; l++) {
+    const goal = target - nums[l];
+    let r = l + 1;
+    while (r < nums.length) {
+      if (nums[r] === goal) return [l, r];
+      r++;
     }
   }
+  return [];
 }
