@@ -30,7 +30,11 @@ function maxArea(height: number[]): number {
     Math.min(height[l], height[r]) * (r - l);
 
   let [l, r, v] = [0, height.length - 1, 0];
-  let [bl, br, bv] = [l, r, v];
-  console.log({bl});
+  while (r > l) {
+    v = Math.max(v, getValue(l, r));
+    if (height[l] < height[r]) l++;
+    else r--;
+  }
+
   return v;
 }
