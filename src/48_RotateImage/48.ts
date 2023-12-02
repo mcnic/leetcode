@@ -5,7 +5,7 @@ You are given an n x n 2D matrix representing an image, rotate the image by 90 d
 
 You have to rotate the image in-place, which means you have to modify the input 2D matrix directly. DO NOT allocate another 2D matrix and do the rotation.
 
- 
+
 
 Example 1:
 
@@ -17,7 +17,7 @@ Example 2:
 
 Input: matrix = [[5,1,9,11],[2,4,8,10],[13,3,6,7],[15,14,12,16]]
 Output: [[15,13,2,5],[14,3,4,1],[12,6,8,9],[16,7,10,11]]
- 
+
 
 Constraints:
 
@@ -30,20 +30,48 @@ n == matrix.length == matrix[i].length
  Do not return anything, modify matrix in-place instead.
  */
 function rotate(matrix: number[][]): void {
-  const len = matrix.length ? matrix[0].length - 1 : 0
-  console.log('len', len)
+  const len = matrix.length ? matrix[0].length - 1 : 0;
+  // console.log('len', len)
   for (let x = 0; x < (len % 2 ? len : len - 1); x++) {
-    for (let y = x; y < (len - x); y++) {
-      const tmp = matrix[x][y]
+    for (let y = x; y < len - x; y++) {
+      const tmp = matrix[x][y];
       // let first  = matrix[x][y]
       // let second = matrix[y][len-x]
       // let third  = matrix[len - x][len - y]
       // let fourth = matrix[len - y][x]
+      matrix[x][y] = matrix[len - y][x]; // 1<-4
+      matrix[len - y][x] = matrix[len - x][len - y]; // 4<-3
+      matrix[len - x][len - y] = matrix[y][len - x]; // 3<-2
+      matrix[y][len - x] = tmp; // 2<-1
       // console.log(x, y, first, second, third, fourth)
-      matrix[x][y] = matrix[len - y][x] // 1<-4
-      matrix[len - y][x] = matrix[len - x][len - y] // 4<-3
-      matrix[len - x][len - y] = matrix[y][len - x] // 3<-2
-      matrix[y][len - x] = tmp // 2<-1
     }
   }
-};
+}
+
+// test('rotate', () => {
+//   expect(
+//     rotate([
+//       [1, 2, 3],
+//       [4, 5, 6],
+//       [7, 8, 9],
+//     ])
+//   ).toEqual([
+//     [7, 4, 1],
+//     [8, 5, 2],
+//     [9, 6, 3],
+//   ]);
+
+//   expect(
+//     rotate([
+//       [5, 1, 9, 11],
+//       [2, 4, 8, 10],
+//       [13, 3, 6, 7],
+//       [15, 14, 12, 16],
+//     ])
+//   ).toEqual([
+//     [15, 13, 2, 5],
+//     [14, 3, 4, 1],
+//     [12, 6, 8, 9],
+//     [16, 7, 10, 11],
+//   ]);
+// });
