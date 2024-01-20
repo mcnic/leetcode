@@ -1,0 +1,6 @@
+15 card of 52 is inverted. How devide deck for same inverted cart in both?
+
+52 = 15p + 37
+
+get 15: N is inverted, in 37 is 15-N inverted
+invert all 15 -> 15-N is inverted = 15-N in other part

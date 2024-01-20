@@ -1,0 +1,18 @@
+in 1st day 1 book 
+in 2 - 2
+in 3 - 3
+...
+total 276
+how is day?
+
+n=1, 0+1
+n=2, 0+2
+...
+n=day, 0+(day-1)
+total=days * (n + 1)
+
+276=(0+n)/2*n
+276=n^2/2
+n^2 = 552
+n= 23
+

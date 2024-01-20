@@ -1,0 +1,5 @@
+how measure 4g if have only 5g and 3g gallons?
+
+fill 5, refill from 5->3 , in 5 will be 2g
+5->3, in 3 will be 2g
+fill 5 and refill 5->3, in 5 will be 4g
