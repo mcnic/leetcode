@@ -38,28 +38,47 @@ Constraints:
 
 Follow up: If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.
 */
-function maxSubArray(nums) {
-  let maxSum = 0;
+/*
+    not complete:
+    may be use 'divide and conquer' strategy, but i not figure out now how it use in this issue...
+    todo: Kadane's algorithm
+*/
+function maxSubArrayBad(nums: number[]): number {
+  // console.log('before', nums)
+  let maxSum: number = -Infinity;
   let l = 0,
     r = nums.length - 1;
   while (l <= r) {
     const sum = nums.slice(l, r + 1).reduce((acc, el) => acc + el, 0);
-    console.log('before', l, r, nums.slice(l, r + 1), sum, maxSum);
+    console.log('before', l, r, sum, maxSum, nums[l + 1], nums[r - 1]);
+    if (sum > maxSum) {
+      maxSum = sum;
+    }
 
-    if (sum > maxSum) maxSum = sum;
-
-    // if ((nums[l + 1] - nums[l]) > (nums[r - 1] - nums[r])) {
     if (nums[l] < nums[r]) {
       l++;
     } else {
       r--;
     }
-    console.log('after', l, r, nums.slice(l, r + 1), maxSum);
+    console.log('after', l, r, maxSum);
+  }
+  return maxSum;
+}
+
+function maxSubArray(nums: number[]): number {
+  let maxSum = nums[0],
+    sum = nums[0];
+  if (nums.length === 1) return maxSum;
+
+  for (let i = 1; i < nums.length; i++) {
+    sum = Math.max(nums[i], sum + nums[i]);
+    maxSum = Math.max(sum, maxSum);
   }
   return maxSum;
 }
 
 test('maxSubarray', () => {
   expect(maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4])).toEqual(6);
-  // expect(maxSubArray([1, 2, -1, -2, 2, 1, -2, 1, 4, -5, 4])).toEqual(6)
+  expect(maxSubArray([-1])).toEqual(-1);
+  expect(maxSubArray([1, 2, -1, -2, 2, 1, -2, 1, 4, -5, 4])).toEqual(6);
 });
