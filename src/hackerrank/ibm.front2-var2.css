@@ -1,0 +1,46 @@
+.form {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-areas:
+    "a a b b c c"
+    "d d d d d d"
+    "e e e f f f"
+    "g g g h h h"
+    "j j j j j j";
+
+
+.first-name {
+  grid-area: a;
+}
+
+.last-name {
+  grid-area: b;
+}
+
+.age {
+  grid-area: c;
+}
+
+.address {
+  grid-area: d;
+}
+
+.place-of-work {
+  grid-area: e;
+}
+  
+.job-title {
+  grid-area: f;
+}
+
+.phone-number {
+  grid-area: g;
+}
+  
+.skype {
+  grid-area: h;
+}
+
+button{
+  grid-area: j;
+}
